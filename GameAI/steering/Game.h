@@ -7,6 +7,8 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_audio.h>
 #include <string>
+#include <time.h>
+#include <stdlib.h>
 
 class GraphicsSystem;
 class GraphicsBuffer;

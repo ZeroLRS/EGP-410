@@ -39,6 +39,8 @@ PerformanceTracker* gpPerformanceTracker = NULL;
 
 int main(int argc, char **argv)
 {
+	srand(time(NULL));
+
 	gpPerformanceTracker = new PerformanceTracker();
 
 	gpPerformanceTracker->startTracking("init");
