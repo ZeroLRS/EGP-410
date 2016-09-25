@@ -56,7 +56,10 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="UnitManager.cpp">
-      <Filter>Source Files\Managers</Filter>
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +118,10 @@
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="UnitManager.h">
-      <Filter>Header Files\Managers</Filter>
+      <Filter>Header Files\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -155,11 +161,11 @@
     <Filter Include="Source Files\Units">
       <UniqueIdentifier>{820b8d07-ae99-4b13-b15d-e6e6c1e3fbbc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Managers">
-      <UniqueIdentifier>{e9c1d4bc-f8ee-43d2-8238-6a3cc4ac4401}</UniqueIdentifier>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{0be3788c-0285-4e0f-b692-706477ffec15}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Managers">
-      <UniqueIdentifier>{73172add-923e-4ba6-8377-bd3954568b04}</UniqueIdentifier>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{14221f5e-27bd-4195-9256-ab20e6ceb53c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

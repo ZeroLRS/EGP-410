@@ -71,6 +71,7 @@ bool Game::init()
 
 	mpGraphicsBufferManager = new GraphicsBufferManager();
 	mpSpriteManager = new SpriteManager();
+	mpInputManager = new InputManager();
 
 	//startup a lot of allegro stuff
 
@@ -100,19 +101,7 @@ bool Game::init()
 		return false;
 	}
 
-	//should probably be done in the InputSystem!
-	if( !al_install_keyboard() )
-	{
-		printf( "Keyboard not installed!\n" ); 
-		return false;
-	}
-
-	//should probably be done in the InputSystem!
-	if( !al_install_mouse() )
-	{
-		printf( "Mouse not installed!\n" ); 
-		return false;
-	}
+	mpInputManager->init();
 
 	//should be somewhere else!
 	al_init_font_addon();
@@ -127,13 +116,6 @@ bool Game::init()
 	if( mpFont == NULL )
 	{
 		printf( "ttf font file not loaded properly!\n" ); 
-		return false;
-	}
-
-	//show the mouse
-	if( !al_hide_mouse_cursor( mpGraphicsSystem->getDisplay() ) )
-	{
-		printf( "Mouse cursor not able to be hidden!\n" ); 
 		return false;
 	}
 
@@ -231,6 +213,9 @@ void Game::cleanup()
 	al_destroy_font(mpFont);
 	mpFont = NULL;
 
+	delete mpInputManager;
+	mpInputManager = NULL;
+
 	//shutdown components
 	al_uninstall_audio();
 	al_shutdown_image_addon();
@@ -261,15 +246,17 @@ void Game::processLoop()
 
 	mpMessageManager->processMessagesForThisframe();
 
+	mpInputManager->update();
+
 	//get input - should be moved someplace better
 	ALLEGRO_MOUSE_STATE mouseState;
 	al_get_mouse_state( &mouseState );
 
 	if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
 	{
-		Vector2D pos( mouseState.x, mouseState.y );
-		GameMessage* pMessage = new PlayerMoveToMessage( pos );
-		MESSAGE_MANAGER->addMessage( pMessage, 0 );
+		//Vector2D pos( mouseState.x, mouseState.y );
+		//GameMessage* pMessage = new PlayerMoveToMessage( pos );
+		//MESSAGE_MANAGER->addMessage( pMessage, 0 );
 	}
 
 

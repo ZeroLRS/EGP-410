@@ -11,6 +11,7 @@
 #include <stdlib.h>
 
 #include "UnitManager.h"
+#include "InputManager.h"
 
 class GraphicsSystem;
 class GraphicsBuffer;
@@ -55,6 +56,7 @@ private:
 	SpriteManager* mpSpriteManager;
 	GameMessageManager* mpMessageManager;
 	UnitManager* mpUnitManager;
+	InputManager* mpInputManager;
 	Timer* mpLoopTimer;
 	Timer* mpMasterTimer;
 	bool mShouldExit;
