@@ -178,20 +178,27 @@ bool Game::init()
 	}
 
 	//setup units
+	mpUnitManager = new UnitManager();
+
 	Vector2D pos( 0.0f, 0.0f );
 	Vector2D vel( 0.0f, 0.0f );
-	mpUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
+	KinematicUnit* pUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
+	//We have to add the player first, because the construction of the others rely on it's location...
+	mpUnitManager->pushUnit(pUnit, "player");
 	
 	Vector2D pos2( 1000.0f, 500.0f );
 	Vector2D vel2( 0.0f, 0.0f );
-	mpAIUnit = new KinematicUnit( pEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f );
+	KinematicUnit* pAIUnit1 = new KinematicUnit( pEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f );
 	//give steering behavior
-	mpAIUnit->dynamicArrive( mpUnit ); 
+	pAIUnit1->dynamicArrive( pUnit ); 
 
 	Vector2D pos3( 500.0f, 500.0f );
-	mpAIUnit2 = new KinematicUnit( pEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f );
+	KinematicUnit* pAIUnit2 = new KinematicUnit( pEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f );
 	//give steering behavior
-	mpAIUnit2->dynamicSeek( mpUnit );  
+	pAIUnit2->dynamicSeek( pUnit );  
+
+	mpUnitManager->pushUnit(pAIUnit1, "AIUnit1");
+	mpUnitManager->pushUnit(pAIUnit2, "AIUnit2");
 
 	return true;
 }
@@ -199,12 +206,8 @@ bool Game::init()
 void Game::cleanup()
 {
 	//delete units
-	delete mpUnit;
-	mpUnit = NULL;
-	delete mpAIUnit;
-	mpAIUnit = NULL;
-	delete mpAIUnit2;
-	mpAIUnit2 = NULL;
+	delete mpUnitManager;
+	mpUnitManager = NULL;
 
 	//delete the timers
 	delete mpLoopTimer;
@@ -247,18 +250,14 @@ void Game::beginLoop()
 void Game::processLoop()
 {
 	//update units
-	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
-	mpAIUnit->update( LOOP_TARGET_TIME/1000.0f );
-	mpAIUnit2->update( LOOP_TARGET_TIME/1000.0f );
+	mpUnitManager->Update( LOOP_TARGET_TIME/1000.0f );
 	
 	//draw background
 	Sprite* pBackgroundSprite = mpSpriteManager->getSprite( BACKGROUND_SPRITE_ID );
 	pBackgroundSprite->draw( *(mpGraphicsSystem->getBackBuffer()), 0, 0 );
 
 	//draw units
-	mpUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-	mpAIUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-	mpAIUnit2->draw( GRAPHICS_SYSTEM->getBackBuffer() );
+	mpUnitManager->Draw( GRAPHICS_SYSTEM->getBackBuffer() );
 
 	mpMessageManager->processMessagesForThisframe();
 

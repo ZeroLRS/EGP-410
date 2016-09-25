@@ -10,6 +10,8 @@
 #include <time.h>
 #include <stdlib.h>
 
+#include "UnitManager.h"
+
 class GraphicsSystem;
 class GraphicsBuffer;
 class GraphicsBufferManager;
@@ -45,16 +47,14 @@ public:
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
 	inline ALLEGRO_FONT* getFont() const { return mpFont; };
-
-	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
-	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
-	inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
+	inline KinematicUnit* getManagedUnit(std::string key) const { return mpUnitManager->getUnit(key); };
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
 	GraphicsBufferManager* mpGraphicsBufferManager;
 	SpriteManager* mpSpriteManager;
 	GameMessageManager* mpMessageManager;
+	UnitManager* mpUnitManager;
 	Timer* mpLoopTimer;
 	Timer* mpMasterTimer;
 	bool mShouldExit;
@@ -65,10 +65,6 @@ private:
 	IDType mBackgroundBufferID;
 	IDType mPlayerIconBufferID;
 	IDType mEnemyIconBufferID;
-
-	KinematicUnit* mpUnit;
-	KinematicUnit* mpAIUnit;
-	KinematicUnit* mpAIUnit2;
 };
 
 float genRandomBinomial();//range -1:1 from "Artificial Intelligence for Games", Millington and Funge

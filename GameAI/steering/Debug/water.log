@@ -1,10 +1,12 @@
-﻿Build started 9/25/2016 2:36:01 AM.
-     1>Project "D:\Documents\School\Fall\AI\EGP-410\GameAI\steering\water.vcxproj" on node 2 (Build target(s)).
+﻿Build started 9/25/2016 5:31:10 AM.
+     1>Project "D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\water.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I..\..\DeanLib /I"..\..\External Libs\Allegro5\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt UnitManager.cpp
-         UnitManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I..\..\DeanLib /I"..\..\External Libs\Allegro5\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp PlayerMoveToMessage.cpp
+         PlayerMoveToMessage.cpp
+         Game.cpp
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\School\Fall\AI\EGP-410\GameAI\steering\Debug\steering.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\..\External Libs\Allegro5\lib" /LIBPATH:..\..\DeanLib\debug kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro_monolith-debug.lib" DeanLib.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Documents\School\Fall\AI\EGP-410\GameAI\steering\Debug\steering.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\School\Fall\AI\EGP-410\GameAI\steering\Debug\steering.lib" /MACHINE:X86 /SAFESEH Debug\DynamicArriveSteering.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\Debug\steering.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\..\External Libs\Allegro5\lib" /LIBPATH:..\..\DeanLib\debug kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro_monolith-debug.lib" DeanLib.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\Debug\steering.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\Debug\steering.lib" /MACHINE:X86 /SAFESEH Debug\DynamicArriveSteering.obj
          Debug\DynamicSeekSteering.obj
          Debug\Game.obj
          Debug\GameMessage.obj
@@ -23,11 +25,9 @@
          Debug\SpriteManager.obj
          Debug\Steering.obj
          Debug\UnitManager.obj
-         LINK : D:\Documents\School\Fall\AI\EGP-410\GameAI\steering\Debug\steering.exe not found or not built by the last incremental link; performing full link
-     1>DynamicArriveSteering.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-         water.vcxproj -> D:\Documents\School\Fall\AI\EGP-410\GameAI\steering\Debug\steering.exe
-     1>Done Building Project "D:\Documents\School\Fall\AI\EGP-410\GameAI\steering\water.vcxproj" (Build target(s)).
+         water.vcxproj -> D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\Debug\steering.exe
+     1>Done Building Project "D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\water.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.14
+Time Elapsed 00:00:02.22

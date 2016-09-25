@@ -47,7 +47,7 @@ KinematicUnit* UnitManager::getUnit(std::string key)
 		return mUnits[key];
 	else
 	{
-		std::cout << "ERROR: Tried to get a KinematicUnit* from mUnits, but the key not taken!";
+		std::cout << "ERROR: Tried to get a KinematicUnit* from mUnits, but the key is not taken! KEY: " << key << std::endl;
 		return nullptr;
 	}
 }

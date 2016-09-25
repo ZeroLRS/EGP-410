@@ -15,6 +15,6 @@ PlayerMoveToMessage::~PlayerMoveToMessage()
 
 void PlayerMoveToMessage::process()
 {
-	gpGame->getPlayerUnit()->arrive(mPos);
+	gpGame->getManagedUnit("player")->arrive(mPos);
 }
 
