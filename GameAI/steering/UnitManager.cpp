@@ -54,7 +54,14 @@ KinematicUnit* UnitManager::getUnit(std::string key)
 
 void UnitManager::Update(float time)
 {
-	std::map<std::string, KinematicUnit> unitBuffer;
+	//Temporary updater while double buffering is fixed.
+	for (auto kv : mUnits)
+	{
+		kv.second->update(time);
+	}
+
+	//Fix this mess later so that double buffering works properly.
+	/*std::map<std::string, KinematicUnit> unitBuffer;
 	//unitBuffer.insert(mUnits.begin(), mUnits.end);
 
 	for (auto kv : mUnits)
@@ -71,7 +78,7 @@ void UnitManager::Update(float time)
 	for (auto kv : unitBuffer)
 	{
 		mUnits[kv.first] = &kv.second;
-	}
+	}*/
 }
 
 void UnitManager::Draw(GraphicsBuffer* pBuffer)
