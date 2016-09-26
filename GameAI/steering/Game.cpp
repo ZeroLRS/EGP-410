@@ -165,22 +165,7 @@ bool Game::init()
 	Vector2D pos( 0.0f, 0.0f );
 	Vector2D vel( 0.0f, 0.0f );
 	KinematicUnit* pUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
-	//We have to add the player first, because the construction of the others rely on it's location...
 	mpUnitManager->pushUnit(pUnit, "player");
-	
-	Vector2D pos2( 1000.0f, 500.0f );
-	Vector2D vel2( 0.0f, 0.0f );
-	KinematicUnit* pAIUnit1 = new KinematicUnit( pEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f );
-	//give steering behavior
-	pAIUnit1->dynamicArrive( pUnit ); 
-
-	Vector2D pos3( 500.0f, 500.0f );
-	KinematicUnit* pAIUnit2 = new KinematicUnit( pEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f );
-	//give steering behavior
-	pAIUnit2->dynamicSeek( pUnit );  
-
-	mpUnitManager->pushUnit(pAIUnit1, "AIUnit1");
-	mpUnitManager->pushUnit(pAIUnit2, "AIUnit2");
 
 	return true;
 }
@@ -250,22 +235,13 @@ void Game::processLoop()
 
 	//all this should be moved to InputManager!!!
 	{
-		//get mouse state
-		ALLEGRO_MOUSE_STATE mouseState;
-		al_get_mouse_state( &mouseState );
-
-		//create mouse text
-		stringstream mousePos;
-		mousePos << mouseState.x << ":" << mouseState.y;
+		//stringstream mousePos;
+		//mousePos << mouseState.x << ":" << mouseState.y;
 
 		//write text at mouse position
-		al_draw_text( mpFont, al_map_rgb( 255, 255, 255 ), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str() );
+		//al_draw_text( mpFont, al_map_rgb( 255, 255, 255 ), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str() );
 
 		mpGraphicsSystem->swap();
-
-		//get current keyboard state
-		ALLEGRO_KEYBOARD_STATE keyState;
-		al_get_keyboard_state( &keyState );
 	}
 }
 

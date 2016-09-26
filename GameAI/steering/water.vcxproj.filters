@@ -64,6 +64,9 @@
     <ClCompile Include="ExitGameMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
+    <ClCompile Include="SpawnUnitMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -127,6 +130,9 @@
       <Filter>Header Files\Input</Filter>
     </ClInclude>
     <ClInclude Include="ExitGameMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnUnitMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>

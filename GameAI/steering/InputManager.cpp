@@ -4,7 +4,7 @@
 #include "GameMessageManager.h"
 #include "PlayerMoveToMessage.h"
 #include "ExitGameMessage.h"
-//#include "AddUnitMessage.h"
+#include "SpawnUnitMessage.h"
 //#include "DeleteUnitMessage.h"
 
 InputManager::InputManager()
@@ -83,6 +83,8 @@ void InputManager::isADown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_A) == 1 && al_key_down(&prev, ALLEGRO_KEY_A) == 0)
 	{
+		GameMessage* pMessage = new SpawnUnitMessage("dynamicArrive");
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
 		return;// true;
 	}
 	else
@@ -97,6 +99,8 @@ void InputManager::isSDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_S) == 1 && al_key_down(&prev, ALLEGRO_KEY_S) == 0)
 	{
+		GameMessage* pMessage = new SpawnUnitMessage("dynamicSeek");
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
 		return;// true;
 	}
 	else

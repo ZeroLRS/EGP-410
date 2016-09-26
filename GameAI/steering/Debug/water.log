@@ -1,15 +1,17 @@
-﻿Build started 9/25/2016 8:25:45 PM.
+﻿Build started 9/25/2016 9:35:01 PM.
      1>Project "D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\water.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I..\..\DeanLib /I"..\..\External Libs\Allegro5\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt ExitGameMessage.cpp Game.cpp GameMessage.cpp GameMessageManager.cpp GraphicsSystem.cpp InputManager.cpp KinematicUnit.cpp KinematicWanderSteering.cpp main.cpp PlayerMoveToMessage.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I..\..\DeanLib /I"..\..\External Libs\Allegro5\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt ExitGameMessage.cpp Game.cpp GameMessage.cpp GameMessageManager.cpp GraphicsSystem.cpp InputManager.cpp KinematicUnit.cpp KinematicWanderSteering.cpp main.cpp PlayerMoveToMessage.cpp SpawnUnitMessage.cpp UnitManager.cpp
+         UnitManager.cpp
+         SpawnUnitMessage.cpp
          InputManager.cpp
-         GameMessage.cpp
          Game.cpp
-         ExitGameMessage.cpp
          Generating Code...
          Compiling...
          PlayerMoveToMessage.cpp
          GameMessageManager.cpp
+         GameMessage.cpp
+         ExitGameMessage.cpp
          Generating Code...
          Skipping... (no relevant changes detected)
          main.cpp
@@ -34,6 +36,7 @@
          Debug\KinematicWanderSteering.obj
          Debug\main.obj
          Debug\PlayerMoveToMessage.obj
+         Debug\SpawnUnitMessage.obj
          Debug\Sprite.obj
          Debug\SpriteManager.obj
          Debug\Steering.obj
@@ -44,4 +47,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.60
+Time Elapsed 00:00:06.70

@@ -49,6 +49,8 @@ public:
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
 	inline ALLEGRO_FONT* getFont() const { return mpFont; };
 	inline KinematicUnit* getManagedUnit(std::string key) const { return mpUnitManager->getUnit(key); };
+	inline int getUnitTotal() const { return mpUnitManager->getUnitTotal(); };
+	inline void pushManagedUnit(KinematicUnit* unit, std::string key) { mpUnitManager->pushUnit(unit, key); };
 	inline void setGameExit(bool exit) { mShouldExit = exit; };
 
 private:

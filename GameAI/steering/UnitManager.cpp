@@ -1,6 +1,6 @@
 #include "UnitManager.h"
 
-UnitManager::UnitManager() { }
+UnitManager::UnitManager() { mUnitTotal = 0; }
 
 UnitManager::~UnitManager()
 {
@@ -20,18 +20,26 @@ void UnitManager::clearUnits()
 void UnitManager::pushUnit(KinematicUnit* newUnit, std::string key)
 {
 	if (!mUnits.count(key))
+	{
 		mUnits[key] = newUnit;
+		mUnitTotal++;
+	}
 	else
 		std::cout << "ERROR: Tried to insert a KinematicUnit* into mUnits, but the key is already taken!";
 }
 
 void UnitManager::deleteRandomUnit()
 {
+	//Don't do anything if there is only one entry left,
+	//	because that would be the player
+	if (mUnits.size() <= 1)
+		return;
+
 	int delIndex = rand() % mUnits.size();
 	int count = 0;
 	for (auto kv : mUnits)
 	{
-		if (delIndex == count)
+		if (delIndex == count && kv.first != "player") //Make sure we don't delete the player...
 		{
 			delete kv.second;
 			mUnits.erase(kv.first);

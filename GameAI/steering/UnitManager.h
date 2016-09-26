@@ -21,10 +21,13 @@ public:
 	void Update( float time );
 	void Draw( GraphicsBuffer* pBuffer );
 
+	int getUnitTotal() { return mUnitTotal;  }
+
 private:
 	void clearUnits();
 
 	std::map<std::string, KinematicUnit*> mUnits;
+	int mUnitTotal;
 };
 
 #endif
