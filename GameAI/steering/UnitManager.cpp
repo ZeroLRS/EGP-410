@@ -1,4 +1,8 @@
 #include "UnitManager.h"
+#include "GameMessageManager.h"
+#include "ExitGameMessage.h"
+#include "Defines.h"
+#include "Game.h"
 
 UnitManager::UnitManager() { mUnitTotal = 0; }
 
@@ -30,17 +34,27 @@ void UnitManager::pushUnit(KinematicUnit* newUnit, std::string key)
 
 void UnitManager::deleteRandomUnit()
 {
-	//Don't do anything if there is only one entry left,
-	//	because that would be the player
+	//If the player is the only unit left, end the program
 	if (mUnits.size() <= 1)
+	{
+		GameMessage* pMessage = new ExitGameMessage(true);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
 		return;
+	}
 
 	int delIndex = rand() % mUnits.size();
 	int count = 0;
 	for (auto kv : mUnits)
 	{
-		if (delIndex == count && kv.first != "player") //Make sure we don't delete the player...
+		if (delIndex == count) 
 		{
+			//Make sure we don't delete the player...
+			//	Instead, recall the function.
+			if (kv.first == "player")
+			{
+				deleteRandomUnit();
+				return;
+			}
 			delete kv.second;
 			mUnits.erase(kv.first);
 			return;

@@ -5,7 +5,7 @@
 #include "PlayerMoveToMessage.h"
 #include "ExitGameMessage.h"
 #include "SpawnUnitMessage.h"
-//#include "DeleteUnitMessage.h"
+#include "DeleteUnitMessage.h"
 
 InputManager::InputManager()
 {
@@ -117,6 +117,8 @@ void InputManager::isDDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_D) == 1 && al_key_down(&prev, ALLEGRO_KEY_D) == 0)
 	{
+		GameMessage* pMessage = new DeleteUnitMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
 		return;// true;
 	}
 	else

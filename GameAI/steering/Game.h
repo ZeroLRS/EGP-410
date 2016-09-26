@@ -51,6 +51,7 @@ public:
 	inline KinematicUnit* getManagedUnit(std::string key) const { return mpUnitManager->getUnit(key); };
 	inline int getUnitTotal() const { return mpUnitManager->getUnitTotal(); };
 	inline void pushManagedUnit(KinematicUnit* unit, std::string key) { mpUnitManager->pushUnit(unit, key); };
+	inline void deleteRandomUnit() { mpUnitManager->deleteRandomUnit(); };
 	inline void setGameExit(bool exit) { mShouldExit = exit; };
 
 private:

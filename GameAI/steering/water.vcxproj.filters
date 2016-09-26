@@ -67,6 +67,9 @@
     <ClCompile Include="SpawnUnitMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
+    <ClCompile Include="DeleteUnitMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -133,6 +136,9 @@
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="SpawnUnitMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteUnitMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
