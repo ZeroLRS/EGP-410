@@ -3,7 +3,7 @@
 #include "GraphicsSystem.h"
 #include "GameMessageManager.h"
 #include "PlayerMoveToMessage.h"
-//#include "ExitGameMessage.h"
+#include "ExitGameMessage.h"
 //#include "AddUnitMessage.h"
 //#include "DeleteUnitMessage.h"
 
@@ -67,6 +67,8 @@ void InputManager::isEscDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_ESCAPE) == 1 && al_key_down(&prev, ALLEGRO_KEY_ESCAPE) == 0)
 	{
+		GameMessage* pMessage = new ExitGameMessage(true);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
 		return;// true;
 	}
 	else
