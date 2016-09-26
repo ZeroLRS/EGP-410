@@ -1,6 +1,7 @@
 #pragma once
 
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
 #include "Trackable.h"
 #include "Vector2D.h"
 
@@ -18,6 +19,8 @@ public:
 	void swap();
 	void wrapCoordinates( Vector2D& vector );//change the x and y values in the vector to keep them on the visible screen
 
+	void drawText(Vector2D& pos, std::string& text);
+
 	//accessors
 	int getWidth() const { return mWidth; };
 	int getHeight() const { return mHeight; };
@@ -29,6 +32,7 @@ public:
 private:
 	ALLEGRO_DISPLAY* mpDisplay;
 	GraphicsBuffer* mpBackBuffer;
+	ALLEGRO_FONT* mpFont;
 	int mWidth;
 	int mHeight;
 };

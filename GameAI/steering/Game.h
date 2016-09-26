@@ -4,7 +4,6 @@
 #include "PerformanceTracker.h"
 #include "Defines.h"
 #include <allegro5/allegro.h>
-#include <allegro5/allegro_font.h>
 #include <allegro5/allegro_audio.h>
 #include <string>
 #include <time.h>
@@ -47,7 +46,6 @@ public:
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
-	inline ALLEGRO_FONT* getFont() const { return mpFont; };
 	inline KinematicUnit* getManagedUnit(std::string key) const { return mpUnitManager->getUnit(key); };
 	inline int getUnitTotal() const { return mpUnitManager->getUnitTotal(); };
 	inline void pushManagedUnit(KinematicUnit* unit, std::string key) { mpUnitManager->pushUnit(unit, key); };
@@ -66,7 +64,6 @@ private:
 	bool mShouldExit;
 
 	//should be somewhere else
-	ALLEGRO_FONT* mpFont;
 	ALLEGRO_SAMPLE* mpSample;
 	IDType mBackgroundBufferID;
 	IDType mPlayerIconBufferID;

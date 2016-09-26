@@ -33,7 +33,6 @@ Game::Game()
 	,mpLoopTimer(NULL)
 	,mpMasterTimer(NULL)
 	,mShouldExit(false)
-	,mpFont(NULL)
 	,mpSample(NULL)
 	,mBackgroundBufferID(INVALID_ID)
 	//,mSmurfBufferID(INVALID_ID)
@@ -102,22 +101,6 @@ bool Game::init()
 	}
 
 	mpInputManager->init();
-
-	//should be somewhere else!
-	al_init_font_addon();
-	if( !al_init_ttf_addon() )
-	{
-		printf( "ttf font addon not initted properly!\n" ); 
-		return false;
-	}
-
-	//actually load the font
-	mpFont = al_load_ttf_font( "cour.ttf", 20, 0 );
-	if( mpFont == NULL )
-	{
-		printf( "ttf font file not loaded properly!\n" ); 
-		return false;
-	}
 
 	if( !al_init_primitives_addon() )
 	{
@@ -195,8 +178,6 @@ void Game::cleanup()
 
 	al_destroy_sample(mpSample);
 	mpSample = NULL;
-	al_destroy_font(mpFont);
-	mpFont = NULL;
 
 	delete mpInputManager;
 	mpInputManager = NULL;
@@ -232,17 +213,12 @@ void Game::processLoop()
 	mpMessageManager->processMessagesForThisframe();
 
 	mpInputManager->update();
+		
+	Vector2D mousePos = mpInputManager->getMousePos();
+	std::string mousePosStr = std::to_string((int)mousePos.getX()) + ", " + std::to_string((int)mousePos.getY());
+	mpGraphicsSystem->drawText(mousePos, mousePosStr);
 
-	//all this should be moved to InputManager!!!
-	{
-		//stringstream mousePos;
-		//mousePos << mouseState.x << ":" << mouseState.y;
-
-		//write text at mouse position
-		//al_draw_text( mpFont, al_map_rgb( 255, 255, 255 ), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str() );
-
-		mpGraphicsSystem->swap();
-	}
+	mpGraphicsSystem->swap();
 }
 
 bool Game::endLoop()

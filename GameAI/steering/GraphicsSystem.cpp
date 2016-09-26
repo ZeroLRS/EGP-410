@@ -1,4 +1,5 @@
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_ttf.h>
 
 #include "Game.h"
 #include "GraphicsSystem.h"
@@ -27,6 +28,21 @@ bool GraphicsSystem::init( int width, int height )
 		fprintf(stderr, "GraphicsSystem::failed to create display!\n");
 		return false;
 	}
+
+	al_init_font_addon();
+	if (!al_init_ttf_addon())
+	{
+		printf("ttf font addon not initted properly!\n");
+		return false;
+	}
+
+	//actually load the font
+	mpFont = al_load_ttf_font("cour.ttf", 20, 0);
+	if (mpFont == NULL)
+	{
+		printf("ttf font file not loaded properly!\n");
+		return false;
+	}
 		
 	//get the backbuffer
 	ALLEGRO_BITMAP* pBackBuffer = al_get_backbuffer( mpDisplay );
@@ -44,6 +60,9 @@ bool GraphicsSystem::init( int width, int height )
 
 void GraphicsSystem::cleanup()
 {
+	al_destroy_font(mpFont);
+	mpFont = NULL;
+
 	al_destroy_display( mpDisplay );
 	mpDisplay = NULL;
 
@@ -55,6 +74,11 @@ void GraphicsSystem::cleanup()
 void GraphicsSystem::swap()
 {
 	al_flip_display();
+}
+
+void GraphicsSystem::drawText(Vector2D& pos, std::string& text)
+{
+	al_draw_text(mpFont, al_map_rgb(255, 255, 255), pos.getX(), pos.getY(), ALLEGRO_ALIGN_CENTRE, text.c_str());
 }
 
 void GraphicsSystem::wrapCoordinates( Vector2D& vector )
