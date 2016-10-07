@@ -1,35 +1,29 @@
-﻿Build started 9/25/2016 10:32:21 PM.
-     1>Project "D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\water.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I..\..\DeanLib /I"..\..\External Libs\Allegro5\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp
-         Game.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\Debug\steering.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\..\External Libs\Allegro5\lib" /LIBPATH:..\..\DeanLib\debug kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro_monolith-debug.lib" DeanLib.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\Debug\steering.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\Debug\steering.lib" /MACHINE:X86 /SAFESEH Debug\DeleteUnitMessage.obj
-         Debug\DynamicArriveSteering.obj
-         Debug\DynamicSeekSteering.obj
-         Debug\ExitGameMessage.obj
-         Debug\Game.obj
-         Debug\GameMessage.obj
-         Debug\GameMessageManager.obj
-         Debug\GraphicsBuffer.obj
-         Debug\GraphicsBufferManager.obj
-         Debug\GraphicsSystem.obj
-         Debug\InputManager.obj
-         Debug\Kinematic.obj
-         Debug\KinematicArriveSteering.obj
-         Debug\KinematicSeekSteering.obj
-         Debug\KinematicUnit.obj
-         Debug\KinematicWanderSteering.obj
-         Debug\main.obj
-         Debug\PlayerMoveToMessage.obj
-         Debug\SpawnUnitMessage.obj
-         Debug\Sprite.obj
-         Debug\SpriteManager.obj
-         Debug\Steering.obj
-         Debug\UnitManager.obj
-         water.vcxproj -> D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\Debug\steering.exe
-     1>Done Building Project "D:\Documents\School\Fall 2016\AI\EGP-410\GameAI\steering\water.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:01.17
+﻿  UnitManager.cpp
+  Steering.cpp
+  SpriteManager.cpp
+  Sprite.cpp
+  SpawnUnitMessage.cpp
+  PlayerMoveToMessage.cpp
+  main.cpp
+  KinematicWanderSteering.cpp
+  KinematicUnit.cpp
+  KinematicSeekSteering.cpp
+  KinematicArriveSteering.cpp
+  Kinematic.cpp
+  InputManager.cpp
+  GraphicsSystem.cpp
+  GraphicsBufferManager.cpp
+  GraphicsBuffer.cpp
+  GameMessageManager.cpp
+  GameMessage.cpp
+  Game.cpp
+  ExitGameMessage.cpp
+  Generating Code...
+  Compiling...
+  DynamicSeekSteering.cpp
+  DynamicArriveSteering.cpp
+  DeleteUnitMessage.cpp
+  Generating Code...
+DeleteUnitMessage.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  water.vcxproj -> C:\Users\Student\Documents\EGP-410\GameAI\steering\Debug\steering.exe
+  water.vcxproj -> C:\Users\Student\Documents\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)
