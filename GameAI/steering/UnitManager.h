@@ -14,20 +14,23 @@ public:
 	UnitManager();
 	~UnitManager();
 
-	void pushUnit(KinematicUnit* newUnit, std::string key);
+	void pushUnit(KinematicUnit* newUnit);
 	void deleteRandomUnit();
-	KinematicUnit* getUnit(std::string key);
+	KinematicUnit* getUnit(int key);
 
 	void Update( float time );
 	void Draw( GraphicsBuffer* pBuffer );
 
-	int getUnitTotal() { return mUnitTotal;  }
+	void createPlayer(KinematicUnit* player) { if (mpPlayer == nullptr) mpPlayer = player; };
+	KinematicUnit* getPlayer() { return mpPlayer; };
+
+	int getUnitTotal() { return mUnits.size(); };
 
 private:
 	void clearUnits();
 
-	std::map<std::string, KinematicUnit*> mUnits;
-	int mUnitTotal;
+	std::vector<KinematicUnit*> mUnits;
+	KinematicUnit* mpPlayer;
 };
 
 #endif

@@ -103,31 +103,31 @@ void KinematicUnit::wander()
 
 void KinematicUnit::dynamicSeek( KinematicUnit* pTarget )
 {
-	DynamicSeekSteering* pDynamicSeekSteering = new DynamicSeekSteering( this, gpGame->getManagedUnit("player") );
+	DynamicSeekSteering* pDynamicSeekSteering = new DynamicSeekSteering( this, gpGame->getPlayerUnit() );
 	setSteering( pDynamicSeekSteering );
 }
 
 void KinematicUnit::dynamicFlee( KinematicUnit* pTarget )
 {
-	DynamicSeekSteering* pDynamicSeekSteering = new DynamicSeekSteering( this, gpGame->getManagedUnit("player"), true );
+	DynamicSeekSteering* pDynamicSeekSteering = new DynamicSeekSteering( this, gpGame->getPlayerUnit(), true );
 	setSteering( pDynamicSeekSteering );
 }
 
 void KinematicUnit::dynamicArrive( KinematicUnit* pTarget )
 {
-	DynamicArriveSteering* pDynamicArriveSteering = new DynamicArriveSteering( this, gpGame->getManagedUnit("player"));
+	DynamicArriveSteering* pDynamicArriveSteering = new DynamicArriveSteering( this, gpGame->getPlayerUnit());
 	setSteering( pDynamicArriveSteering );
 }
 
 void KinematicUnit::wanderAndFlee(KinematicUnit* pTarget)
 {
-	WanderAndSeekSteering* pWanderAndSeekSteering = new WanderAndSeekSteering(this, gpGame->getManagedUnit("player"), true);
+	WanderAndSeekSteering* pWanderAndSeekSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit(), true);
 	setSteering(pWanderAndSeekSteering);
 }
 
 void KinematicUnit::wanderAndSeek(KinematicUnit* pTarget)
 {
-	WanderAndSeekSteering* pWanderAndSeekSteering = new WanderAndSeekSteering(this, gpGame->getManagedUnit("player"));
+	WanderAndSeekSteering* pWanderAndSeekSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit());
 	setSteering(pWanderAndSeekSteering);
 }
 

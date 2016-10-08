@@ -17,7 +17,7 @@ SpawnUnitMessage::~SpawnUnitMessage()
 void SpawnUnitMessage::process()
 {
 	Sprite* enemySprite = gpGame->getSpriteManager()->getSprite(AI_ICON_SPRITE_ID);
-	KinematicUnit* playerUnit = gpGame->getManagedUnit("player");
+	KinematicUnit* playerUnit = gpGame->getPlayerUnit();
 
 	Vector2D pos = playerUnit->getPosition();
 	pos.setX(pos.getX() + 100);
@@ -41,6 +41,6 @@ void SpawnUnitMessage::process()
 		return;
 	}
 
-	gpGame->pushManagedUnit(pAIUnit, "AIUnit" + std::to_string(gpGame->getUnitTotal()));
+	gpGame->pushManagedUnit(pAIUnit);
 }
 

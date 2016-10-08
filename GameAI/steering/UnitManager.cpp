@@ -1,32 +1,34 @@
 #include "UnitManager.h"
 #include "GameMessageManager.h"
 #include "ExitGameMessage.h"
+#include <algorithm>
 #include "Defines.h"
 #include "Game.h"
 
-UnitManager::UnitManager() { mUnitTotal = 0; }
+UnitManager::UnitManager() { mpPlayer = nullptr; }
 
 UnitManager::~UnitManager()
 {
 	clearUnits();
+	if (mpPlayer != nullptr)
+		delete mpPlayer;
 }
 
 void UnitManager::clearUnits()
 {
-	for (auto kv : mUnits)
+	for (auto v : mUnits)
 	{
-		delete kv.second;
+		delete v;
 	}
 
 	mUnits.clear();
 }
 
-void UnitManager::pushUnit(KinematicUnit* newUnit, std::string key)
+void UnitManager::pushUnit(KinematicUnit* newUnit)
 {
-	if (!mUnits.count(key))
+	if (std::find(mUnits.begin(), mUnits.end(), newUnit) == mUnits.end())
 	{
-		mUnits[key] = newUnit;
-		mUnitTotal++;
+		mUnits.push_back(newUnit);
 	}
 	else
 		std::cout << "ERROR: Tried to insert a KinematicUnit* into mUnits, but the key is already taken!";
@@ -34,8 +36,8 @@ void UnitManager::pushUnit(KinematicUnit* newUnit, std::string key)
 
 void UnitManager::deleteRandomUnit()
 {
-	//If the player is the only unit left, end the program
-	if (mUnits.size() <= 1)
+	//If there are no units left, end the program
+	if (mUnits.size() <= 0)
 	{
 		GameMessage* pMessage = new ExitGameMessage(true);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -43,33 +45,17 @@ void UnitManager::deleteRandomUnit()
 	}
 
 	int delIndex = rand() % mUnits.size();
-	int count = 0;
-	for (auto kv : mUnits)
-	{
-		if (delIndex == count) 
-		{
-			//Make sure we don't delete the player...
-			//	Instead, recall the function.
-			if (kv.first == "player")
-			{
-				deleteRandomUnit();
-				return;
-			}
-			delete kv.second;
-			mUnits.erase(kv.first);
-			return;
-		}
-		++count;
-	}
+	delete mUnits[delIndex];
+	mUnits.erase(mUnits.begin() + delIndex);
 }
 
-KinematicUnit* UnitManager::getUnit(std::string key)
+KinematicUnit* UnitManager::getUnit(int key)
 {
-	if (mUnits.count(key))
+	if ((int) mUnits.size() >= key)
 		return mUnits[key];
 	else
 	{
-		std::cout << "ERROR: Tried to get a KinematicUnit* from mUnits, but the key is not taken! KEY: " << key << std::endl;
+		std::cout << "ERROR: Tried to get a KinematicUnit* from mUnits, but the key is not valid! KEY: " << key << std::endl;
 		return nullptr;
 	}
 }
@@ -77,10 +63,12 @@ KinematicUnit* UnitManager::getUnit(std::string key)
 void UnitManager::Update(float time)
 {
 	//Temporary updater while double buffering is fixed.
-	for (auto kv : mUnits)
+	for (auto v : mUnits)
 	{
-		kv.second->update(time);
+		v->update(time);
 	}
+
+	mpPlayer->update(time);
 
 	//Fix this mess later so that double buffering works properly.
 	/*std::map<std::string, KinematicUnit> unitBuffer;
@@ -105,8 +93,9 @@ void UnitManager::Update(float time)
 
 void UnitManager::Draw(GraphicsBuffer* pBuffer)
 {
-	for (auto kv : mUnits)
+	for (auto v : mUnits)
 	{
-		kv.second->draw(pBuffer);
+		v->draw(pBuffer);
 	}
+	mpPlayer->draw(pBuffer);
 }

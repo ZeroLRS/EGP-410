@@ -46,9 +46,10 @@ public:
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
-	inline KinematicUnit* getManagedUnit(std::string key) const { return mpUnitManager->getUnit(key); };
+	inline KinematicUnit* getManagedUnit(int key) const { return mpUnitManager->getUnit(key); };
+	inline KinematicUnit* getPlayerUnit() const { return mpUnitManager->getPlayer(); };
 	inline int getUnitTotal() const { return mpUnitManager->getUnitTotal(); };
-	inline void pushManagedUnit(KinematicUnit* unit, std::string key) { mpUnitManager->pushUnit(unit, key); };
+	inline void pushManagedUnit(KinematicUnit* unit) { mpUnitManager->pushUnit(unit); };
 	inline void deleteRandomUnit() { mpUnitManager->deleteRandomUnit(); };
 	inline void setGameExit(bool exit) { mShouldExit = exit; };
 
