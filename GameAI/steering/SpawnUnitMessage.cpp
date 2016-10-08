@@ -30,6 +30,10 @@ void SpawnUnitMessage::process()
 		pAIUnit->dynamicArrive(playerUnit);
 	else if (mType == "dynamicSeek")
 		pAIUnit->dynamicSeek(playerUnit);
+	else if (mType == "wanderAndSeek")
+		pAIUnit->wanderAndSeek(playerUnit);
+	else if (mType == "wanderAndFlee")
+		pAIUnit->wanderAndFlee(playerUnit);
 	else
 	{
 		std::cout << "ERROR: Could not create AI with type: " << mType << ". Deleting unit and returning." << std::endl;

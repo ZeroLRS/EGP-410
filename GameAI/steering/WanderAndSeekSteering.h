@@ -3,13 +3,12 @@
 
 #include "Steering.h"
 #include "KinematicUnit.h"
-
-const float MAX_WANDER_ROTATION = 1.0f;
+#include "KinematicWanderSteering.h"
 
 class WanderAndSeekSteering :public Steering
 {
 public:
-	WanderAndSeekSteering(KinematicUnit* pMover, KinematicUnit* pTarget, int lookRadius, bool shouldFlee = false);
+	WanderAndSeekSteering(KinematicUnit* pMover, KinematicUnit* pTarget, bool shouldFlee = false);
 	~WanderAndSeekSteering() {};
 
 	virtual Steering* getSteering();
@@ -17,7 +16,7 @@ public:
 private:
 	KinematicUnit* mpMover;
 	KinematicUnit* mpTarget;
-	int mLookRadius;
+	Vector2D wanderTarget;
 	bool mShouldFlee;
 };
 

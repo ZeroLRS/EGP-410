@@ -83,7 +83,7 @@ void InputManager::isADown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_A) == 1 && al_key_down(&prev, ALLEGRO_KEY_A) == 0)
 	{
-		GameMessage* pMessage = new SpawnUnitMessage("dynamicArrive");
+		GameMessage* pMessage = new SpawnUnitMessage("wanderAndSeek");
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 		return;// true;
 	}
@@ -99,7 +99,7 @@ void InputManager::isSDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_S) == 1 && al_key_down(&prev, ALLEGRO_KEY_S) == 0)
 	{
-		GameMessage* pMessage = new SpawnUnitMessage("dynamicSeek");
+		GameMessage* pMessage = new SpawnUnitMessage("wanderAndFlee");
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 		return;// true;
 	}

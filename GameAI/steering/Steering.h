@@ -31,6 +31,7 @@ public:
 	void setLinear( const Vector2D& linear ) { mLinear = linear; };
 	void setAngular( float angular ) { mAngular = angular; };
 	bool shouldApplyDirectly() const { return mApplyDirectly; };
+	void updateLookRadius(int lookRadius) { mLookRadius = lookRadius; };
 
 	virtual Steering* getSteering() { return this; };//overridden by sub-classes
 
@@ -38,5 +39,7 @@ protected:
 	Vector2D mLinear;//linear velocity
 	float mAngular;//angular velocity
 	bool mApplyDirectly;
-
+	float getDistance(const Vector2D& v1, const Vector2D& v2);
+	int mLookRadius;
+	
 };
