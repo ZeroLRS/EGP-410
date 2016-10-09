@@ -35,11 +35,38 @@ Steering* WanderAndSeekSteering::getSteering()
 		}
 		else
 		{
-			//If we are fleeing, we should also wander a bit towards the target.
+			//If we are fleeing, we should also wander a bit towards the wanderTarget.
 			Vector2D linearFlee = mpMover->getPosition() - mpTarget->getPosition();
 			mLinear += linearFlee;
 			mLinear /= 2;
 		}
+	}
+	
+	//Avoid the closest unit
+	int closestUnitDistance = -1;
+	KinematicUnit* closestUnit;
+	for (int i = 0; i < gpGame->getUnitTotal(); i++)
+	{
+		KinematicUnit* unit = gpGame->getManagedUnit(i);
+		int distanceToUnit = getDistance(mpMover->getPosition(), unit->getPosition());
+
+		if (distanceToUnit < (mLookRadius / 2))
+		{
+			if ((distanceToUnit < closestUnitDistance || closestUnitDistance == -1) && distanceToUnit > 0)
+			{
+				closestUnitDistance = distanceToUnit;
+				closestUnit = unit;
+			}
+		}
+	}
+
+	if (closestUnitDistance >= 0)
+	{
+		std::cout << "DING" << std::endl;
+		//Flee the nearby unit and merge that direction with the already existing direction.
+		Vector2D linearFlee = mpMover->getPosition() - closestUnit->getPosition();
+		mLinear += linearFlee;
+		mLinear /= 2;
 	}
 
 	mLinear.normalize();
