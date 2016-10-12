@@ -10,6 +10,8 @@
 #include "DynamicSeekSteering.h"
 #include "DynamicArriveSteering.h"
 #include "WanderAndSeekSteering.h"
+#include "WallManager.h"
+#include <math.h>
 
 using namespace std;
 
@@ -22,6 +24,7 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 ,mMaxVelocity(maxVelocity)
 ,mMaxAcceleration(maxAcceleration)
 {
+	mCollisionRadius = 10; //Just a test number, implement a better way to get this later
 }
 
 KinematicUnit::~KinematicUnit()
@@ -36,6 +39,7 @@ void KinematicUnit::draw( GraphicsBuffer* pBuffer )
 
 void KinematicUnit::update(float time)
 {
+	//Calculate where we want to go.
 	Steering* steering;
 	if( mpCurrentSteering != NULL )
 	{
@@ -58,6 +62,34 @@ void KinematicUnit::update(float time)
 		//since we are applying the steering directly we don't want any rotational velocity
 		setRotationalVelocity( 0.0f );
 		steering->setAngular( 0.0f );
+	}
+
+	//Check if we've collided with anything.
+	int wallCount = WALL_MANAGER->getWallCount();
+	for (int i = 0; i < wallCount; i++)
+	{
+		Wall* currentWall = WALL_MANAGER->getWall(i);
+		Vector2D lineOrigin = currentWall->getOrigin();
+		Vector2D lineEnd = currentWall->getDirection() * currentWall->getLength();
+
+		//This looks awful, make it look better before submitting.
+		// Thanks to http://mathworld.wolfram.com/Point-LineDistance2-Dimensional.html for the help
+		float distance = ((lineEnd.getX() - lineOrigin.getX()) * (lineOrigin.getY() - mPosition.getY())) -
+			((lineOrigin.getX() - mPosition.getX()) * (lineEnd.getY() - lineOrigin.getY()));
+
+		distance /= std::sqrt((lineEnd.getX() - lineOrigin.getX()) * (lineEnd.getX() - lineOrigin.getX()) +
+			(lineEnd.getY() - lineOrigin.getY()) * (lineEnd.getY() - lineOrigin.getY()));
+
+		//If they are colliding
+		if (std::abs(distance) < mCollisionRadius)
+		{
+			int dirSide = distance > 0 ? 1 : -1;
+			float dirX = currentWall->getDirection().getY() * dirSide;
+			float dirY = currentWall->getDirection().getX();
+			Vector2D newDirection(dirX, dirY);
+			newDirection.normalize();
+			mVelocity = newDirection * mMaxVelocity;
+		}
 	}
 
 	//move the unit using current velocities

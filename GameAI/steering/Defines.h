@@ -11,3 +11,4 @@ const IDType HIGHEST_ID = 9999;
 
 #define MESSAGE_MANAGER gpGame->getMessageManager()
 #define GRAPHICS_SYSTEM gpGame->getGraphicsSystem()
+#define WALL_MANAGER gpGame->getWallManager()

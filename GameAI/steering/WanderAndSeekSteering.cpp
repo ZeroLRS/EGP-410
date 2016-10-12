@@ -62,7 +62,6 @@ Steering* WanderAndSeekSteering::getSteering()
 
 	if (closestUnitDistance >= 0)
 	{
-		std::cout << "DING" << std::endl;
 		//Flee the nearby unit and merge that direction with the already existing direction.
 		Vector2D linearFlee = mpMover->getPosition() - closestUnit->getPosition();
 		mLinear += linearFlee;

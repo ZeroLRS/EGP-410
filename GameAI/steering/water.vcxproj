@@ -34,6 +34,8 @@
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Steering.h" />
     <ClInclude Include="UnitManager.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="WallManager.h" />
     <ClInclude Include="WanderAndSeekSteering.h" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +62,8 @@
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="Steering.cpp" />
     <ClCompile Include="UnitManager.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WallManager.cpp" />
     <ClCompile Include="WanderAndSeekSteering.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

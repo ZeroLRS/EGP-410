@@ -117,6 +117,7 @@ bool Game::init()
 	}
 
 	mpMessageManager = new GameMessageManager();
+	mpWallManager = new WallManager();
 
 	//load buffers
 	mBackgroundBufferID = mpGraphicsBufferManager->loadBuffer("wallpaper.bmp");
@@ -150,6 +151,26 @@ bool Game::init()
 	KinematicUnit* pUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
 	mpUnitManager->createPlayer(pUnit);
 
+	//Make walls on all four sides
+	Vector2D right(WIDTH, 0);
+	Vector2D down(0, HEIGHT);
+	right.normalize();
+	down.normalize();
+
+	/* Note:
+	 *	For some reason, I can't get the right and bottom walls to work correctly
+	 *		for now, they work because of the game's wrap around, but they cause
+	 *		wierd issues when enabled.
+	*/
+	Wall* topWall = new Wall(Vector2D(0, 0), right, WIDTH);
+	//Wall* bottomWall = new Wall(Vector2D(0, HEIGHT), right, WIDTH);
+	Wall* leftWall = new Wall(Vector2D(0, 0), down, HEIGHT);
+	//Wall* rightWall = new Wall(Vector2D(WIDTH, 0), down, HEIGHT);
+	mpWallManager->addWall(topWall);
+	//mpWallManager->addWall(bottomWall);
+	mpWallManager->addWall(leftWall);
+	//mpWallManager->addWall(rightWall);
+
 	return true;
 }
 
@@ -158,6 +179,8 @@ void Game::cleanup()
 	//delete units
 	delete mpUnitManager;
 	mpUnitManager = NULL;
+	delete mpWallManager;
+	mpWallManager = NULL;
 
 	//delete the timers
 	delete mpLoopTimer;

@@ -11,6 +11,7 @@
 
 #include "UnitManager.h"
 #include "InputManager.h"
+#include "WallManager.h"
 
 class GraphicsSystem;
 class GraphicsBuffer;
@@ -24,7 +25,7 @@ const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
 const IDType AI_ICON_SPRITE_ID = 2;
 
-const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
+const float LOOP_TARGET_TIME = 100;//33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
 class Game:public Trackable
 {
@@ -48,6 +49,7 @@ public:
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
 	inline KinematicUnit* getManagedUnit(int key) const { return mpUnitManager->getUnit(key); };
 	inline KinematicUnit* getPlayerUnit() const { return mpUnitManager->getPlayer(); };
+	inline WallManager* getWallManager() const { return mpWallManager; };
 	inline int getUnitTotal() const { return mpUnitManager->getUnitTotal(); };
 	inline void pushManagedUnit(KinematicUnit* unit) { mpUnitManager->pushUnit(unit); };
 	inline void deleteRandomUnit() { mpUnitManager->deleteRandomUnit(); };
@@ -60,6 +62,7 @@ private:
 	GameMessageManager* mpMessageManager;
 	UnitManager* mpUnitManager;
 	InputManager* mpInputManager;
+	WallManager* mpWallManager;
 	Timer* mpLoopTimer;
 	Timer* mpMasterTimer;
 	bool mShouldExit;

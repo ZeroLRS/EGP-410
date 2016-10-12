@@ -57,6 +57,7 @@ private:
 	Vector2D mTarget;//used only for Kinematic seek and arrive
 	float mMaxVelocity;
 	float mMaxAcceleration;
+	int mCollisionRadius;
 
 	void setSteering( Steering* pSteering );
 

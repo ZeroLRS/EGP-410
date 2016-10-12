@@ -73,6 +73,12 @@
     <ClCompile Include="WanderAndSeekSteering.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="WallManager.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -147,6 +153,12 @@
     <ClInclude Include="WanderAndSeekSteering.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="WallManager.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -190,6 +202,12 @@
     </Filter>
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{14221f5e-27bd-4195-9256-ab20e6ceb53c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collision">
+      <UniqueIdentifier>{62447a02-870a-4ce2-aee1-7ca12b002cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Collision">
+      <UniqueIdentifier>{e33330a7-e57e-4edf-bf6f-3c3c69342113}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
