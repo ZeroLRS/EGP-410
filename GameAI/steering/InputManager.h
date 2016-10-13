@@ -23,6 +23,10 @@ private:
 	void isADown();
 	void isSDown();
 	void isDDown();
+	void isPlusDown();
+	void isMinusDown();
+	void isUpArrowDown();
+	void isDownArrowDown();
 	void mouseLBDown();
 	bool down;
 	bool keyDown;

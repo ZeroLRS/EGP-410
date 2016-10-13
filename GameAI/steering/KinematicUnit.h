@@ -32,7 +32,9 @@ public:
 	float getMaxVelocity() const { return mMaxVelocity; };
 	Vector2D getVelocity() const { return mVelocity; };
 	float getMaxAcceleration() const { return mMaxAcceleration; };
+	void setMaxAcceleration(float max) { mMaxAcceleration = max; };
 	void setVelocity( const Vector2D& velocity ){ mVelocity = velocity; };
+	void setMaxVelocity(float max) { mMaxVelocity = max; };
 
 	virtual void setNewOrientation();//face the direction you are moving
 

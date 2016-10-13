@@ -7,7 +7,7 @@ WanderAndSeekSteering::WanderAndSeekSteering(KinematicUnit* pMover, KinematicUni
 	, mpTarget(pTarget)
 	, mShouldFlee(shouldFlee)
 {
-	mLookRadius = 150;
+	mLookRadius = gpGame->getUnitVisionRadius();
 	mApplyDirectly = false;
 	wanderTarget = Vector2D(0, 0);
 }

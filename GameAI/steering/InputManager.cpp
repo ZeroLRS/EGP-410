@@ -6,6 +6,8 @@
 #include "ExitGameMessage.h"
 #include "SpawnUnitMessage.h"
 #include "DeleteUnitMessage.h"
+#include "ModifyMenuSelection.h"
+#include "ChangeMenuSelection.h"
 
 InputManager::InputManager()
 {
@@ -128,6 +130,78 @@ void InputManager::isDDown()
 	return;
 }
 
+void InputManager::isPlusDown()
+{
+	ALLEGRO_KEYBOARD_STATE current;
+	al_get_keyboard_state(&current);
+
+	if (al_key_down(&current, ALLEGRO_KEY_EQUALS) == 1 && al_key_down(&prev, ALLEGRO_KEY_EQUALS) == 0)
+	{
+		GameMessage* pMessage = new ModifyMenuSelection(1);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+		return;// true;
+	}
+	else
+	{
+		return;
+	}
+	return;
+}
+
+void InputManager::isMinusDown()
+{
+	ALLEGRO_KEYBOARD_STATE current;
+	al_get_keyboard_state(&current);
+
+	if (al_key_down(&current, ALLEGRO_KEY_MINUS) == 1 && al_key_down(&prev, ALLEGRO_KEY_MINUS) == 0)
+	{
+		GameMessage* pMessage = new ModifyMenuSelection(-1);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+		return;// true;
+	}
+	else
+	{
+		return;
+	}
+	return;
+}
+
+void InputManager::isUpArrowDown()
+{
+	ALLEGRO_KEYBOARD_STATE current;
+	al_get_keyboard_state(&current);
+
+	if (al_key_down(&current, ALLEGRO_KEY_UP) == 1 && al_key_down(&prev, ALLEGRO_KEY_UP) == 0)
+	{
+		GameMessage* pMessage = new ChangeMenuSelection(1);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+		return;// true;
+	}
+	else
+	{
+		return;
+	}
+	return;
+}
+
+void InputManager::isDownArrowDown()
+{
+	ALLEGRO_KEYBOARD_STATE current;
+	al_get_keyboard_state(&current);
+
+	if (al_key_down(&current, ALLEGRO_KEY_DOWN) == 1 && al_key_down(&prev, ALLEGRO_KEY_DOWN) == 0)
+	{
+		GameMessage* pMessage = new ChangeMenuSelection(-1);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+		return;// true;
+	}
+	else
+	{
+		return;
+	}
+	return;
+}
+
 void InputManager::update()
 {
 	al_get_keyboard_state(&current);
@@ -136,6 +210,10 @@ void InputManager::update()
 	isADown();
 	isSDown();
 	isDDown();
+	isPlusDown();
+	isMinusDown();
+	isUpArrowDown();
+	isDownArrowDown();
 	mouseLBDown();
 
 	prev = current;

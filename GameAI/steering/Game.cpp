@@ -47,6 +47,7 @@ Game::~Game()
 bool Game::init()
 {
 	mShouldExit = false;
+	mUnitVisionRadius = 150;
 
 	//create Timers
 	mpLoopTimer = new Timer;
@@ -171,6 +172,8 @@ bool Game::init()
 	mpWallManager->addWall(leftWall);
 	//mpWallManager->addWall(rightWall);
 
+	mpMenu = new Menu();
+
 	return true;
 }
 
@@ -201,6 +204,9 @@ void Game::cleanup()
 
 	al_destroy_sample(mpSample);
 	mpSample = NULL;
+
+	delete mpMenu;
+	mpMenu = NULL;
 
 	delete mpInputManager;
 	mpInputManager = NULL;
@@ -240,6 +246,16 @@ void Game::processLoop()
 	Vector2D mousePos = mpInputManager->getMousePos();
 	std::string mousePosStr = std::to_string((int)mousePos.getX()) + ", " + std::to_string((int)mousePos.getY());
 	mpGraphicsSystem->drawText(mousePos, mousePosStr);
+
+	if (getMenu()->drawMenu())
+	{
+		std::string velText = "Velocity :" + std::to_string((int)getMenu()->getOptionValue(0));
+		std::string visText = "Vision :" + std::to_string((int)getMenu()->getOptionValue(1));
+		std::string accText = "Accel :" + std::to_string((int)getMenu()->getOptionValue(2));
+		mpGraphicsSystem->drawText(Vector2D(75, 0), velText);
+		mpGraphicsSystem->drawText(Vector2D(75, 25), visText);
+		mpGraphicsSystem->drawText(Vector2D(75, 50), accText);
+	}
 
 	mpGraphicsSystem->swap();
 }

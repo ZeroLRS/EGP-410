@@ -12,6 +12,7 @@
 #include "UnitManager.h"
 #include "InputManager.h"
 #include "WallManager.h"
+#include "Menu.h"
 
 class GraphicsSystem;
 class GraphicsBuffer;
@@ -25,7 +26,7 @@ const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
 const IDType AI_ICON_SPRITE_ID = 2;
 
-const float LOOP_TARGET_TIME = 100;//33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
+const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
 class Game:public Trackable
 {
@@ -54,6 +55,9 @@ public:
 	inline void pushManagedUnit(KinematicUnit* unit) { mpUnitManager->pushUnit(unit); };
 	inline void deleteRandomUnit() { mpUnitManager->deleteRandomUnit(); };
 	inline void setGameExit(bool exit) { mShouldExit = exit; };
+	inline void setUnitVisionRadius(int radius) { mUnitVisionRadius = radius; };
+	inline int getUnitVisionRadius() const { return mUnitVisionRadius; };
+	inline Menu* getMenu() const { return mpMenu; };
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -65,7 +69,9 @@ private:
 	WallManager* mpWallManager;
 	Timer* mpLoopTimer;
 	Timer* mpMasterTimer;
+	Menu* mpMenu;
 	bool mShouldExit;
+	int mUnitVisionRadius;
 
 	//should be somewhere else
 	ALLEGRO_SAMPLE* mpSample;
