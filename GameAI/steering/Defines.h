@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _DEFINES_H
+#define _DEFINES_H
 
 #include <string>
 
@@ -12,3 +13,5 @@ const IDType HIGHEST_ID = 9999;
 #define MESSAGE_MANAGER gpGame->getMessageManager()
 #define GRAPHICS_SYSTEM gpGame->getGraphicsSystem()
 #define WALL_MANAGER gpGame->getWallManager()
+
+#endif

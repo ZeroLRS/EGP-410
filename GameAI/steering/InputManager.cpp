@@ -71,11 +71,6 @@ void InputManager::isEscDown()
 	{
 		GameMessage* pMessage = new ExitGameMessage(true);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-		return;// true;
-	}
-	else
-	{
-		return;
 	}
 	return;
 }
@@ -87,11 +82,6 @@ void InputManager::isADown()
 	{
 		GameMessage* pMessage = new SpawnUnitMessage("wanderAndSeek");
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-		return;// true;
-	}
-	else
-	{
-		return;
 	}
 	return;
 }
@@ -103,11 +93,6 @@ void InputManager::isSDown()
 	{
 		GameMessage* pMessage = new SpawnUnitMessage("wanderAndFlee");
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-		return;// true;
-	}
-	else
-	{
-		return;
 	}
 	return;
 }
@@ -121,12 +106,8 @@ void InputManager::isDDown()
 	{
 		GameMessage* pMessage = new DeleteUnitMessage();
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-		return;// true;
 	}
-	else
-	{
-		return;
-	}
+
 	return;
 }
 
@@ -139,12 +120,8 @@ void InputManager::isPlusDown()
 	{
 		GameMessage* pMessage = new ModifyMenuSelection(1);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-		return;// true;
 	}
-	else
-	{
-		return;
-	}
+
 	return;
 }
 
@@ -157,11 +134,6 @@ void InputManager::isMinusDown()
 	{
 		GameMessage* pMessage = new ModifyMenuSelection(-1);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-		return;// true;
-	}
-	else
-	{
-		return;
 	}
 	return;
 }
@@ -175,11 +147,6 @@ void InputManager::isUpArrowDown()
 	{
 		GameMessage* pMessage = new ChangeMenuSelection(1);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-		return;// true;
-	}
-	else
-	{
-		return;
 	}
 	return;
 }
@@ -193,11 +160,6 @@ void InputManager::isDownArrowDown()
 	{
 		GameMessage* pMessage = new ChangeMenuSelection(-1);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-		return;// true;
-	}
-	else
-	{
-		return;
 	}
 	return;
 }

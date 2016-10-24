@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _EXITGAMEMESSAGE_H
+#define _EXITGAMEMESSAGE_H
 
 #include "GameMessage.h"
 
@@ -13,3 +14,5 @@ public:
 private:
 	bool mExit;
 };
+
+#endif

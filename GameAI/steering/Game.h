@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _GAME_H
+#define _GAME_H
 
 #include "Trackable.h"
 #include "PerformanceTracker.h"
@@ -86,3 +87,4 @@ float genRandomFloat();//range 0:1 from "Artificial Intelligence for Games", Mil
 extern Game* gpGame;
 extern PerformanceTracker* gpPerformanceTracker;
 
+#endif
