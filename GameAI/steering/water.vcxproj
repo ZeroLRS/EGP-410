@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlignmentSteering.h" />
     <ClInclude Include="ChangeMenuSelection.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="DeleteUnitMessage.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="ModifyMenuSelection.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
+    <ClInclude Include="SeperationSteering.h" />
     <ClInclude Include="SpawnUnitMessage.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
@@ -42,6 +44,7 @@
     <ClInclude Include="WanderAndSeekSteering.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AlignmentSteering.cpp" />
     <ClCompile Include="ChangeMenuSelection.cpp" />
     <ClCompile Include="DeleteUnitMessage.cpp" />
     <ClCompile Include="DynamicArriveSteering.cpp" />
@@ -71,6 +74,9 @@
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WallManager.cpp" />
     <ClCompile Include="WanderAndSeekSteering.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CohesionSteering.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{07ED8114-0659-4424-9468-50DBBEA5882A}</ProjectGuid>

@@ -88,6 +88,9 @@
     <ClCompile Include="ModifyMenuSelection.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
+    <ClCompile Include="AlignmentSteering.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -177,6 +180,12 @@
     <ClInclude Include="ModifyMenuSelection.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="AlignmentSteering.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="SeperationSteering.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -227,5 +236,10 @@
     <Filter Include="Header Files\Collision">
       <UniqueIdentifier>{e33330a7-e57e-4edf-bf6f-3c3c69342113}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CohesionSteering.h">
+      <Filter>Header Files\Steering</Filter>
+    </None>
   </ItemGroup>
 </Project>
