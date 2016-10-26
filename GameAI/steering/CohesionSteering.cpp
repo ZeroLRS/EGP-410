@@ -1,14 +1,14 @@
-#include "AlignmentSteering.h"
+#include "CohesionSteering.h"
 #include "Game.h"
 #include "GraphicsSystem.h"
 
-AlignmentSteering::AlignmentSteering(KinematicUnit* pMover)
+CohesionSteering::CohesionSteering(KinematicUnit* pMover)
 	:mpMover(pMover)
 {
 	mApplyDirectly = false;
 }
 
-Steering* AlignmentSteering::getSteering()
+Steering* CohesionSteering::getSteering()
 {
 	mLookRadius = gpGame->getUnitVisionRadius();
 
@@ -24,7 +24,7 @@ Steering* AlignmentSteering::getSteering()
 		if (distanceToUnit < (mLookRadius))
 		{
 			++foundUnits;
-			mLinear += unit->getVelocity();
+			mLinear += unit->getPosition();
 		}
 	}
 
@@ -33,8 +33,9 @@ Steering* AlignmentSteering::getSteering()
 		return this;
 	}
 
-	//Average out all of the unit alignments
+	//Average out all of the unit locations
 	mLinear /= foundUnits;
+	mLinear -= mpMover->getPosition();
 	mLinear.normalize();
 	return this;
 }
