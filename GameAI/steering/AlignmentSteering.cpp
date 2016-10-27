@@ -10,8 +10,9 @@ AlignmentSteering::AlignmentSteering(KinematicUnit* pMover)
 
 Steering* AlignmentSteering::getSteering()
 {
-	mLookRadius = gpGame->getUnitVisionRadius();
-
+	mLookRadius = 200;//gpGame->getUnitVisionRadius();
+	mLinear = Vector2D();
+ 
 	//Keep track of the units we have found
 	int foundUnits = 0;
 	KinematicUnit* closestUnit;

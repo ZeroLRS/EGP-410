@@ -147,7 +147,7 @@ bool Game::init()
 	//setup units
 	mpUnitManager = new UnitManager();
 
-	Vector2D pos( 0.0f, 0.0f );
+	Vector2D pos( 100.0f, 100.0f );
 	Vector2D vel( 0.0f, 0.0f );
 	KinematicUnit* pUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
 	mpUnitManager->createPlayer(pUnit);

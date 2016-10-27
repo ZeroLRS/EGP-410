@@ -53,6 +53,7 @@ public:
 	void dynamicArrive(KinematicUnit* pTarget);
 	void wanderAndFlee(KinematicUnit* pTarget);
 	void wanderAndSeek(KinematicUnit* pTarget);
+	void boid(KinematicUnit* pTarget);
 
 private:
 	Sprite* mpSprite;

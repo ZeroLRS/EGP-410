@@ -10,6 +10,7 @@
 #include "DynamicSeekSteering.h"
 #include "DynamicArriveSteering.h"
 #include "WanderAndSeekSteering.h"
+#include "BoidSteering.h"
 #include "WallManager.h"
 #include <math.h>
 
@@ -83,10 +84,7 @@ void KinematicUnit::update(float time)
 		//If they are colliding
 		if (std::abs(distance) < mCollisionRadius)
 		{
-			int dirSide = distance > 0 ? 1 : -1;
-			float dirX = currentWall->getDirection().getY() * dirSide;
-			float dirY = currentWall->getDirection().getX();
-			Vector2D newDirection(dirX, dirY);
+			Vector2D newDirection = mVelocity * -1;
 			newDirection.normalize();
 			mVelocity = newDirection * mMaxVelocity;
 		}
@@ -161,5 +159,11 @@ void KinematicUnit::wanderAndSeek(KinematicUnit* pTarget)
 {
 	WanderAndSeekSteering* pWanderAndSeekSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit());
 	setSteering(pWanderAndSeekSteering);
+}
+
+void KinematicUnit::boid(KinematicUnit* pTarget)
+{
+	BoidSteering* pBoidSteering = new BoidSteering(this);
+	setSteering(pBoidSteering);
 }
 

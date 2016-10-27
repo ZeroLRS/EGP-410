@@ -97,6 +97,17 @@ void InputManager::isSDown()
 	return;
 }
 
+void InputManager::isIDown()
+{
+
+	if (al_key_down(&current, ALLEGRO_KEY_I) == 1 && al_key_down(&prev, ALLEGRO_KEY_I) == 0)
+	{
+		GameMessage* pMessage = new SpawnUnitMessage("boid");
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+	return;
+}
+
 void InputManager::isDDown()
 {
 	ALLEGRO_KEYBOARD_STATE current;
@@ -172,6 +183,7 @@ void InputManager::update()
 	isADown();
 	isSDown();
 	isDDown();
+	isIDown();
 	isPlusDown();
 	isMinusDown();
 	isUpArrowDown();

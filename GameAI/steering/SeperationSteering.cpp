@@ -10,7 +10,8 @@ SeperationSteering::SeperationSteering(KinematicUnit* pMover)
 
 Steering* SeperationSteering::getSteering()
 {
-	mLookRadius = gpGame->getUnitVisionRadius();
+	mLookRadius = 48;//gpGame->getUnitVisionRadius();
+	mLinear = Vector2D();
 
 	//Keep track of the units we have found
 	int foundUnits = 0;
@@ -40,13 +41,3 @@ Steering* SeperationSteering::getSteering()
 	mLinear.normalize();
 	return this;
 }
-/*
- ______     _____      _____       _____      ____     _____    _____      ____
-(_   _ \   (_   _)    / ___ \     (  __ \    / __ \   (  __ \  (  __ \    (    )
-  ) (_) )    | |     / /   \_)     ) )_) )  / /  \ \   ) )_) )  ) )_) )   / /\ \
-  \   _/     | |    ( (  ____     (  ___/  ( ()  () ) (  ___/  (  ___/   ( (__) )
-  /  _ \     | |    ( ( (__  )     ) )     ( ()  () )  ) )      ) )       )    (
- _) (_) )   _| |__   \ \__/ /     ( (       \ \__/ /  ( (      ( (       /  /\  \
-(______/   /_____(    \____/      /__\       \____/   /__\     /__\     /__(  )__\
-
-*/

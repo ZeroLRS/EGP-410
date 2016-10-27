@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlignmentSteering.h" />
+    <ClInclude Include="BoidSteering.h" />
     <ClInclude Include="ChangeMenuSelection.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="DeleteUnitMessage.h" />
@@ -45,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlignmentSteering.cpp" />
+    <ClCompile Include="BoidSteering.cpp" />
     <ClCompile Include="ChangeMenuSelection.cpp" />
+    <ClCompile Include="CohesionSteering.cpp" />
     <ClCompile Include="DeleteUnitMessage.cpp" />
     <ClCompile Include="DynamicArriveSteering.cpp" />
     <ClCompile Include="DynamicSeekSteering.cpp" />
@@ -66,6 +69,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="ModifyMenuSelection.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />
+    <ClCompile Include="SeperationSteering.cpp" />
     <ClCompile Include="SpawnUnitMessage.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />

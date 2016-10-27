@@ -23,6 +23,7 @@ private:
 	void isADown();
 	void isSDown();
 	void isDDown();
+	void isIDown();
 	void isPlusDown();
 	void isMinusDown();
 	void isUpArrowDown();

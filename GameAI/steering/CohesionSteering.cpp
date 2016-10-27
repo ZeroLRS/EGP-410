@@ -10,7 +10,8 @@ CohesionSteering::CohesionSteering(KinematicUnit* pMover)
 
 Steering* CohesionSteering::getSteering()
 {
-	mLookRadius = gpGame->getUnitVisionRadius();
+	mLookRadius = 75;// gpGame->getUnitVisionRadius();
+	mLinear = Vector2D();
 
 	//Keep track of the units we have found
 	int foundUnits = 0;

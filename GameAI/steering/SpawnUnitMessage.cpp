@@ -34,6 +34,8 @@ void SpawnUnitMessage::process()
 		pAIUnit->wanderAndSeek(playerUnit);
 	else if (mType == "wanderAndFlee")
 		pAIUnit->wanderAndFlee(playerUnit);
+	else if (mType == "boid")
+		pAIUnit->boid(playerUnit);
 	else
 	{
 		std::cout << "ERROR: Could not create AI with type: " << mType << ". Deleting unit and returning." << std::endl;
