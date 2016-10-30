@@ -20,7 +20,7 @@ public:
 	void swap();
 	void wrapCoordinates( Vector2D& vector );//change the x and y values in the vector to keep them on the visible screen
 
-	void drawText(Vector2D& pos, std::string& text);
+	void drawText(const Vector2D& pos, const std::string& text, const bool highlight = false);
 
 	//accessors
 	int getWidth() const { return mWidth; };

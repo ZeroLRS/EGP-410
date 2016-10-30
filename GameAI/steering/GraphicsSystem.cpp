@@ -76,9 +76,14 @@ void GraphicsSystem::swap()
 	al_flip_display();
 }
 
-void GraphicsSystem::drawText(Vector2D& pos, std::string& text)
+void GraphicsSystem::drawText(const Vector2D& pos, const std::string& text, const bool highlight)
 {
-	al_draw_text(mpFont, al_map_rgb(255, 255, 255), pos.getX(), pos.getY(), ALLEGRO_ALIGN_CENTRE, text.c_str());
+	ALLEGRO_COLOR color;
+	if (highlight)
+		color = al_map_rgb(255, 255, 0);
+	else
+		color = al_map_rgb(255, 255, 255);
+	al_draw_text(mpFont, color, pos.getX(), pos.getY(), ALLEGRO_ALIGN_LEFT, text.c_str());
 }
 
 void GraphicsSystem::wrapCoordinates( Vector2D& vector )

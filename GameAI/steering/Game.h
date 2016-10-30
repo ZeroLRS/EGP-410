@@ -13,7 +13,6 @@
 #include "UnitManager.h"
 #include "InputManager.h"
 #include "WallManager.h"
-#include "Menu.h"
 
 class GraphicsSystem;
 class GraphicsBuffer;
@@ -22,6 +21,7 @@ class SpriteManager;
 class KinematicUnit;
 class GameMessageManager;
 class Timer;
+class Menu;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
@@ -59,6 +59,12 @@ public:
 	inline void setUnitVisionRadius(int radius) { mUnitVisionRadius = radius; };
 	inline int getUnitVisionRadius() const { return mUnitVisionRadius; };
 	inline Menu* getMenu() const { return mpMenu; };
+	inline int getSeperationWeight() const { return mSeperationWeight; };
+	inline int getCohesionWeight() const { return mCohesionWeight; };
+	inline int getAlignmentWeight() const { return mAlignmentWeight; };
+	inline void setSeperationWeight(const int weight) { mSeperationWeight = weight; };
+	inline void setCohesionWeight(const int weight) { mCohesionWeight = weight; };
+	inline void setAlignmentWeight(const int weight) { mAlignmentWeight = weight; };
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -73,6 +79,9 @@ private:
 	Menu* mpMenu;
 	bool mShouldExit;
 	int mUnitVisionRadius;
+	int mCohesionWeight;
+	int mSeperationWeight;
+	int mAlignmentWeight;
 
 	//should be somewhere else
 	ALLEGRO_SAMPLE* mpSample;

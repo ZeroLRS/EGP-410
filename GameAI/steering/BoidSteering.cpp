@@ -1,6 +1,7 @@
 #include "BoidSteering.h"
 #include "Game.h"
 #include "GraphicsSystem.h"
+#include "Menu.h"
 
 BoidSteering::BoidSteering(KinematicUnit* pMover)
 	:mpMover(pMover)
@@ -28,9 +29,9 @@ Steering* BoidSteering::getSteering()
 	Steering* alignVel = mpAlignment->getSteering();
 
 	//These can be move to a place easier to modify if needed.
-	float seperWeight = 2;
-	float coheseWeight = 1;
-	float alignWeight = 1;
+	float seperWeight = gpGame->getMenu()->getOptionValue(Menu::SEPERATION_WEIGHT);
+	float coheseWeight = gpGame->getMenu()->getOptionValue(Menu::COHESION_WEIGHT);
+	float alignWeight = gpGame->getMenu()->getOptionValue(Menu::ALIGNMENT_WEIGHT);
 
 	mLinear += seperVel->getLinear() * seperWeight + coheseVel->getLinear() * coheseWeight + alignVel->getLinear() * alignWeight;
 

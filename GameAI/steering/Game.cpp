@@ -20,6 +20,7 @@
 #include "Timer.h"
 #include "KinematicUnit.h"
 #include "PlayerMoveToMessage.h"
+#include "Menu.h"
 
 Game* gpGame = NULL;
 
@@ -249,12 +250,13 @@ void Game::processLoop()
 
 	if (getMenu()->drawMenu())
 	{
-		std::string velText = "Velocity :" + std::to_string((int)getMenu()->getOptionValue(0));
-		std::string visText = "Vision :" + std::to_string((int)getMenu()->getOptionValue(1));
-		std::string accText = "Accel :" + std::to_string((int)getMenu()->getOptionValue(2));
-		mpGraphicsSystem->drawText(Vector2D(75, 0), velText);
-		mpGraphicsSystem->drawText(Vector2D(75, 25), visText);
-		mpGraphicsSystem->drawText(Vector2D(75, 50), accText);
+		int offset = 0;
+		for (int i = 0; i < 5; i++)
+		{
+			std::string text = getMenu()->getOptionName(i) + ": " + std::to_string((int)getMenu()->getOptionValue(i));
+			mpGraphicsSystem->drawText(Vector2D(0, offset), text, getMenu()->getSelected() == i);
+			offset += 25;
+		}
 	}
 
 	mpGraphicsSystem->swap();
@@ -277,82 +279,3 @@ float genRandomFloat()
 	float r = (float)rand()/(float)RAND_MAX;
 	return r;
 }
-
-/*#include "System.h"
-#include "Game.h"
-#include "GameMessageManager.h"
-#include "PlayerMoveToMessage.h"
-#include "GraphicsSystem.h"
-#include "GraphicsBuffer.h"
-#include "Sprite.h"
-#include "KinematicUnit.h"
-#include "Vector2D.h"
-*/
-/*Game* gpGame = NULL;
-
-Game::Game()
-:mpMessageManager(NULL)
-,mFrameNum(0)
-,mMarkedForExit(false)
-{
-}
-
-Game::~Game()
-{
-	delete mpArrowBuffer;
-	delete mpArrowSprite;
-	delete mpEnemyArrowBuffer;
-	delete mpEnemyArrowSprite;
-	delete mpUnit;
-	delete mpAIUnit;
-	delete mpAIUnit2;
-	delete mpMessageManager;
-}
-
-void Game::init()
-{
-	mpMessageManager = new GameMessageManager();
-
-	mpArrowBuffer = new GraphicsBuffer( "arrow.bmp" );
-	mpArrowSprite = new Sprite( mpArrowBuffer, 0, 0, 32, 32 );
-	mpEnemyArrowBuffer = new GraphicsBuffer( "enemy-arrow.bmp" );
-	mpEnemyArrowSprite = new Sprite( mpEnemyArrowBuffer, 0, 0, 32, 32 );
-	
-	Vector2D pos( 0.0f, 0.0f );
-	Vector2D vel( 0.0f, 0.0f );
-	mpUnit = new KinematicUnit( mpArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
-
-	Vector2D pos2( 1000.0f, 500.0f );
-	Vector2D vel2( 0.0f, 0.0f );
-	mpAIUnit = new KinematicUnit( mpEnemyArrowSprite, pos2, 1, vel2, 0.0f, 180.0f, 100.0f );
-	mpAIUnit->dynamicArrive( mpUnit ); 
-	//mpAIUnit->arrive( mpUnit->getPosition() ); 
-
-	Vector2D pos3( 500.0f, 500.0f );
-	mpAIUnit2 = new KinematicUnit( mpEnemyArrowSprite, pos3, 1, vel2, 0.0f, 180.0f, 100.0f );
-	mpAIUnit2->dynamicSeek( mpUnit );  
-	//mpAIUnit2->seek( mpUnit->getPosition() );  
-}
-
-bool Game::update()
-{
-	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
-	mpUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-	mpAIUnit->update( LOOP_TARGET_TIME/1000.0f );
-	mpAIUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-	mpAIUnit2->update( LOOP_TARGET_TIME/1000.0f );
-	mpAIUnit2->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-
-	mpMessageManager->processMessagesForThisframe();
-
-	//get input - should be moved someplace better
-	if( mouse_b & 1 )//left mouse click
-	{
-		Vector2D pos( mouse_x, mouse_y );
-		GameMessage* pMessage = new PlayerMoveToMessage( pos );
-		MESSAGE_MANAGER->addMessage( pMessage, 0 );
-	}
-
-	mFrameNum++;
-	return mMarkedForExit;
-}*/
