@@ -82,12 +82,6 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
-    <ClCompile Include="ChangeMenuSelection.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="ModifyMenuSelection.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
     <ClCompile Include="AlignmentSteering.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
@@ -99,6 +93,21 @@
     </ClCompile>
     <ClCompile Include="BoidSteering.cpp">
       <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeMenuSelectionMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifyMenuSelectionMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="SetMenuSelectionMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadDataMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveDataMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -183,12 +192,6 @@
     <ClInclude Include="Menu.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="ChangeMenuSelection.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="ModifyMenuSelection.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
     <ClInclude Include="AlignmentSteering.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
@@ -197,6 +200,21 @@
     </ClInclude>
     <ClInclude Include="BoidSteering.h">
       <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeMenuSelectionMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="ModifyMenuSelectionMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="SetMenuSelectionMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveDataMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadDataMessage.h">
+      <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

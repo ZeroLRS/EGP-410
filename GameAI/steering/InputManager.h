@@ -21,6 +21,7 @@ private:
 	ALLEGRO_KEYBOARD_STATE current, prev;
 	void isEscDown();
 	void isADown();
+	void isCDown();
 	void isSDown();
 	void isDDown();
 	void isIDown();
@@ -28,6 +29,8 @@ private:
 	void isMinusDown();
 	void isUpArrowDown();
 	void isDownArrowDown();
+	void isCtrlODown();
+	void isCtrlSDown();
 	void mouseLBDown();
 	bool down;
 	bool keyDown;

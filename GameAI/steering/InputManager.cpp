@@ -6,8 +6,12 @@
 #include "ExitGameMessage.h"
 #include "SpawnUnitMessage.h"
 #include "DeleteUnitMessage.h"
-#include "ModifyMenuSelection.h"
-#include "ChangeMenuSelection.h"
+#include "ModifyMenuSelectionMessage.h"
+#include "ChangeMenuSelectionMessage.h"
+#include "SetMenuSelectionMessage.h"
+#include "LoadDataMessage.h"
+#include "SaveDataMessage.h"
+#include "Menu.h"
 
 InputManager::InputManager()
 {
@@ -80,7 +84,18 @@ void InputManager::isADown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_A) == 1 && al_key_down(&prev, ALLEGRO_KEY_A) == 0)
 	{
-		GameMessage* pMessage = new SpawnUnitMessage("wanderAndSeek");
+		GameMessage* pMessage = new SetMenuSelectionMessage(Menu::ALIGNMENT_WEIGHT);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+	return;
+}
+
+void InputManager::isCDown()
+{
+
+	if (al_key_down(&current, ALLEGRO_KEY_C) == 1 && al_key_down(&prev, ALLEGRO_KEY_C) == 0)
+	{
+		GameMessage* pMessage = new SetMenuSelectionMessage(Menu::COHESION_WEIGHT);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	return;
@@ -88,10 +103,9 @@ void InputManager::isADown()
 
 void InputManager::isSDown()
 {
-
 	if (al_key_down(&current, ALLEGRO_KEY_S) == 1 && al_key_down(&prev, ALLEGRO_KEY_S) == 0)
 	{
-		GameMessage* pMessage = new SpawnUnitMessage("wanderAndFlee");
+		GameMessage* pMessage = new SetMenuSelectionMessage(Menu::SEPERATION_WEIGHT);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	return;
@@ -102,8 +116,11 @@ void InputManager::isIDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_I) == 1 && al_key_down(&prev, ALLEGRO_KEY_I) == 0)
 	{
-		GameMessage* pMessage = new SpawnUnitMessage("boid");
-		MESSAGE_MANAGER->addMessage(pMessage, 0);
+		for (int i = 0; i < 5; i++)
+		{
+			GameMessage* pMessage = new SpawnUnitMessage("boid");
+			MESSAGE_MANAGER->addMessage(pMessage, 0);
+		}
 	}
 	return;
 }
@@ -129,7 +146,7 @@ void InputManager::isPlusDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_EQUALS) == 1 && al_key_down(&prev, ALLEGRO_KEY_EQUALS) == 0)
 	{
-		GameMessage* pMessage = new ModifyMenuSelection(1);
+		GameMessage* pMessage = new ModifyMenuSelectionMessage(1);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
@@ -143,7 +160,7 @@ void InputManager::isMinusDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_MINUS) == 1 && al_key_down(&prev, ALLEGRO_KEY_MINUS) == 0)
 	{
-		GameMessage* pMessage = new ModifyMenuSelection(-1);
+		GameMessage* pMessage = new ModifyMenuSelectionMessage(-1);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	return;
@@ -156,7 +173,7 @@ void InputManager::isUpArrowDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_UP) == 1 && al_key_down(&prev, ALLEGRO_KEY_UP) == 0)
 	{
-		GameMessage* pMessage = new ChangeMenuSelection(1);
+		GameMessage* pMessage = new ChangeMenuSelectionMessage(1);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	return;
@@ -169,7 +186,33 @@ void InputManager::isDownArrowDown()
 
 	if (al_key_down(&current, ALLEGRO_KEY_DOWN) == 1 && al_key_down(&prev, ALLEGRO_KEY_DOWN) == 0)
 	{
-		GameMessage* pMessage = new ChangeMenuSelection(-1);
+		GameMessage* pMessage = new ChangeMenuSelectionMessage(-1);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+	return;
+}
+
+void InputManager::isCtrlSDown()
+{
+	ALLEGRO_KEYBOARD_STATE current;
+	al_get_keyboard_state(&current);
+
+	if (al_key_down(&current, ALLEGRO_KEY_S) == 1 && al_key_down(&prev, ALLEGRO_KEY_S) == 0 && al_key_down(&current, ALLEGRO_KEY_LCTRL) == 1)
+	{
+		GameMessage* pMessage = new SaveDataMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+	return;
+}
+
+void InputManager::isCtrlODown()
+{
+	ALLEGRO_KEYBOARD_STATE current;
+	al_get_keyboard_state(&current);
+
+	if (al_key_down(&current, ALLEGRO_KEY_O) == 1 && al_key_down(&prev, ALLEGRO_KEY_O) == 0 && al_key_down(&current, ALLEGRO_KEY_LCTRL) == 1)
+	{
+		GameMessage* pMessage = new LoadDataMessage();
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	return;
@@ -179,16 +222,19 @@ void InputManager::update()
 {
 	al_get_keyboard_state(&current);
 
-	isEscDown();
-	isADown();
-	isSDown();
-	isDDown();
-	isIDown();
-	isPlusDown();
-	isMinusDown();
-	isUpArrowDown();
-	isDownArrowDown();
-	mouseLBDown();
+	isEscDown(); //Exit the game
+	isADown(); //Select Alignment
+	isCDown(); //Select Cohesion
+	isSDown(); //Select Seperation
+	isDDown(); //Delete a boid
+	isIDown(); //Spawn five boids
+	isPlusDown(); //Increment selection
+	isMinusDown(); //Decrement selection
+	isUpArrowDown(); //Change selection up
+	isDownArrowDown(); //Change selection down
+	isCtrlSDown(); //Save state to file
+	isCtrlODown(); //Load state from file
+	//mouseLBDown(); //Move player unit
 
 	prev = current;
 }

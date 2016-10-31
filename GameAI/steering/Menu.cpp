@@ -19,7 +19,7 @@ void Menu::prevOption()
 	mSelectedValue++;
 	if (mSelectedValue >= 5)
 		mSelectedValue = 0;
-	std::cout << "Setting value to: " + std::to_string((int)mSelectedValue) << std::endl;
+	//std::cout << "Setting value to: " + std::to_string((int)mSelectedValue) << std::endl;
 }
 
 void Menu::nextOption()
@@ -27,7 +27,7 @@ void Menu::nextOption()
 	mSelectedValue--;
 	if (mSelectedValue < 0)
 		mSelectedValue = 4;
-	std::cout << "Setting value to: " + std::to_string((int)mSelectedValue) << std::endl;
+	//std::cout << "Setting value to: " + std::to_string((int)mSelectedValue) << std::endl;
 }
 
 void Menu::incrementSelected(const bool decrement)

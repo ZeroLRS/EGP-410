@@ -9,6 +9,7 @@
 #include <allegro5/allegro_primitives.h>
 
 #include <sstream>
+#include <fstream>
 
 #include "Game.h"
 #include "GraphicsSystem.h"
@@ -267,6 +268,45 @@ bool Game::endLoop()
 	//mpMasterTimer->start();
 	mpLoopTimer->sleepUntilElapsed( LOOP_TARGET_TIME );
 	return mShouldExit;
+}
+
+void Game::saveGame()
+{
+	std::ofstream fout;
+
+	fout.open("save.txt");
+
+	fout << mpMenu->getOptionValue(Menu::ALIGNMENT_WEIGHT) << std::endl
+		<< mpMenu->getOptionValue(Menu::COHESION_WEIGHT) << std::endl
+		<< mpMenu->getOptionValue(Menu::SEPERATION_WEIGHT);
+
+	fout.close();
+}
+
+void Game::loadGame()
+{
+	std::ifstream fin;
+	std::string tmp;
+
+	fin.open("save.txt");
+
+	if (fin.is_open())
+	{
+		float alignment, cohesion, seperation;
+
+		std::getline(fin, tmp);
+		alignment = std::stof(tmp);
+		std::getline(fin, tmp);
+		cohesion = std::stof(tmp);
+		std::getline(fin, tmp);
+		seperation = std::stof(tmp);
+
+		mpMenu->setOptionValue(Menu::ALIGNMENT_WEIGHT, alignment);
+		mpMenu->setOptionValue(Menu::COHESION_WEIGHT, cohesion);
+		mpMenu->setOptionValue(Menu::SEPERATION_WEIGHT, seperation);
+	}
+
+	fin.close();
 }
 
 float genRandomBinomial()

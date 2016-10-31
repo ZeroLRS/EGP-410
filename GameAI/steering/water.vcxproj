@@ -13,7 +13,7 @@
   <ItemGroup>
     <ClInclude Include="AlignmentSteering.h" />
     <ClInclude Include="BoidSteering.h" />
-    <ClInclude Include="ChangeMenuSelection.h" />
+    <ClInclude Include="ChangeMenuSelectionMessage.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="DeleteUnitMessage.h" />
     <ClInclude Include="DynamicArriveSteering.h" />
@@ -31,10 +31,13 @@
     <ClInclude Include="KinematicSeekSteering.h" />
     <ClInclude Include="KinematicUnit.h" />
     <ClInclude Include="KinematicWanderSteering.h" />
+    <ClInclude Include="LoadDataMessage.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="ModifyMenuSelection.h" />
+    <ClInclude Include="ModifyMenuSelectionMessage.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
+    <ClInclude Include="SaveDataMessage.h" />
     <ClInclude Include="SeperationSteering.h" />
+    <ClInclude Include="SetMenuSelectionMessage.h" />
     <ClInclude Include="SpawnUnitMessage.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
@@ -47,7 +50,7 @@
   <ItemGroup>
     <ClCompile Include="AlignmentSteering.cpp" />
     <ClCompile Include="BoidSteering.cpp" />
-    <ClCompile Include="ChangeMenuSelection.cpp" />
+    <ClCompile Include="ChangeMenuSelectionMessage.cpp" />
     <ClCompile Include="CohesionSteering.cpp" />
     <ClCompile Include="DeleteUnitMessage.cpp" />
     <ClCompile Include="DynamicArriveSteering.cpp" />
@@ -65,11 +68,14 @@
     <ClCompile Include="KinematicSeekSteering.cpp" />
     <ClCompile Include="KinematicUnit.cpp" />
     <ClCompile Include="KinematicWanderSteering.cpp" />
+    <ClCompile Include="LoadDataMessage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="ModifyMenuSelection.cpp" />
+    <ClCompile Include="ModifyMenuSelectionMessage.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />
+    <ClCompile Include="SaveDataMessage.cpp" />
     <ClCompile Include="SeperationSteering.cpp" />
+    <ClCompile Include="SetMenuSelectionMessage.cpp" />
     <ClCompile Include="SpawnUnitMessage.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />

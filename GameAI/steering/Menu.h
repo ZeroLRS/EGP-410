@@ -22,8 +22,9 @@ public:
 	void toggleDraw();
 	float getOptionValue(int index) { return optionValues[index]; };
 	int getSelected() const { return mSelectedValue; };
-	int setSelected(int selection) { mSelectedValue = selection; };
+	void setSelected(int selection) { mSelectedValue = selection; };
 	std::string getOptionName(int option) { return mOptionNames[option]; };
+	void setOptionValue(int index, float value) { optionValues[index] = value; };
 
 private:
 	float optionValues[5];

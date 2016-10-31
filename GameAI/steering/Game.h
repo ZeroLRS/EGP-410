@@ -43,6 +43,9 @@ public:
 	void processLoop();
 	bool endLoop();
 
+	void saveGame();
+	void loadGame();
+
 	inline GraphicsSystem* getGraphicsSystem() const { return mpGraphicsSystem; };
 	inline GraphicsBufferManager* getGraphicsBufferManager() const { return mpGraphicsBufferManager; };
 	inline SpriteManager* getSpriteManager() const { return mpSpriteManager; };

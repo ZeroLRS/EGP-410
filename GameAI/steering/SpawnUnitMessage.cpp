@@ -20,9 +20,9 @@ void SpawnUnitMessage::process()
 	KinematicUnit* playerUnit = gpGame->getPlayerUnit();
 
 	Vector2D pos = playerUnit->getPosition();
-	pos.setX(pos.getX() + 100);
+	pos.setX(pos.getX() + 100 * genRandomFloat());
 
-	Vector2D vel(0.0f, 0.0f);
+	Vector2D vel(genRandomFloat(), genRandomFloat());
 
 	KinematicUnit* pAIUnit = new KinematicUnit(enemySprite, pos, 1, vel, 0.0f, 180.0f, 100.0f);
 

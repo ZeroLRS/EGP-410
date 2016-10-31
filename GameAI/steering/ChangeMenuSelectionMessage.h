@@ -3,11 +3,11 @@
 
 #include "GameMessage.h"
 
-class ChangeMenuSelection : public GameMessage
+class ChangeMenuSelectionMessage : public GameMessage
 {
 public:
-	ChangeMenuSelection(const int direction);
-	~ChangeMenuSelection();
+	ChangeMenuSelectionMessage(const int direction);
+	~ChangeMenuSelectionMessage();
 
 	void process();
 
